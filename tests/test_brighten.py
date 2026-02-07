@@ -1,7 +1,7 @@
-import os
-import cv2
-import numpy as np
-import pytest
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from brighten import (
     apply_clahe,

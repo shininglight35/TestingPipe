@@ -1,11 +1,7 @@
 name: Python OpenCV CI
 
 on:
-  workflow_dispatch:
-    inputs:
-      example_input:
-        description: 'An example input'
-        required: false
+
   push:
     branches: [ "main" ]
   pull_request:

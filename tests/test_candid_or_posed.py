@@ -63,7 +63,7 @@ def test_output_images_are_saved(tmp_path, input_images):
     """
     Ensure classified images are written to disk.
     """
-    output_dir = tmp_path / "output"
+    output_dir = "output"
 
     for name, img in load_images(INPUT_DIR, input_images):
         label, _, _ = classify_candid_or_posed(img)
@@ -87,7 +87,7 @@ def test_classified_image_is_modified(tmp_path, input_images):
     """
     Ensure classified image is not identical to the original image.
     """
-    output_dir = tmp_path / "output"
+    output_dir = "output"
 
     for name in input_images:
         original_path = os.path.join(INPUT_DIR, name)

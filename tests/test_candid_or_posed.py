@@ -104,10 +104,10 @@ def test_classified_image_is_modified(output_dir, input_images):
         cv2.putText(
             original_img,
             label,
-            (20, 40),
+            (50, 50),
             cv2.FONT_HERSHEY_SIMPLEX,
-            1,
-            (255, 255, 255),
+            2,
+            (255, 0, 0),
             2
         )
 

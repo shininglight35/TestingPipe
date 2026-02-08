@@ -30,15 +30,16 @@ def input_images():
     assert len(files) > 0, "No images found in input/ folder"
     return files
 
+
 @pytest.fixture
 def output_dir():
     """
-    Create a per-run output folder.
+    Always use 'output/' folder for all runs.
     """
-    run_id = os.environ.get("GITHUB_RUN_ID", "local")  # use GitHub run ID if available
-    out = Path("output") / run_id
+    out = Path("output")
     out.mkdir(parents=True, exist_ok=True)
     return out
+
 
 # --------------------
 # Tests

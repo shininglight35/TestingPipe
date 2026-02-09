@@ -1,21 +1,25 @@
 name: Python OpenCV CI
 
 on:
-
   push:
-    branches: [ "main" ]
+    branches: ["main"]
+    # Ignore changes in output/ to prevent infinite CI loops
+    paths-ignore:
+      - "output/**"
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   test:
+    # Optional safety: skip workflow if triggered by the bot itself
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.CI_PAT }}  # Use your PAT here
+          token: ${{ secrets.CI_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -37,8 +41,7 @@ jobs:
         run: mkdir -p output
 
       - name: Run tests (this creates output images)
-        run: |
-          pytest -v
+        run: pytest -v
 
       - name: Configure Git
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

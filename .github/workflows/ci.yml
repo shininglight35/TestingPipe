@@ -3,16 +3,11 @@ name: Python OpenCV CI
 on:
   push:
     branches: ["main"]
-    # Ignore changes in output/ to prevent infinite CI loops
-    paths-ignore:
-      - "output/**"
   pull_request:
     branches: ["main"]
 
 jobs:
   test:
-    # Optional safety: skip workflow if triggered by the bot itself
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
 
     steps:

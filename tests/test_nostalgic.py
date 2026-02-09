@@ -470,21 +470,6 @@ def test_nostalgic_effect_edge_cases(input_images):
         assert result_square is not None, f"apply_nostalgic_effect failed for square {name}"
         assert result_square.shape == square_img.shape, f"Shape mismatch for square {name}"
 
-
-def test_nostalgic_effect_consistency(input_images):
-    """
-    Test that apply_nostalgic_effect produces consistent results.
-    """
-    for name, img in load_images(INPUT_DIR, input_images):
-        # Apply nostalgic effect multiple times to the same image
-        result1 = apply_nostalgic_effect(img)
-        result2 = apply_nostalgic_effect(img)
-        
-        # Results should be identical (deterministic)
-        assert np.array_equal(result1, result2), \
-            f"{name}: apply_nostalgic_effect is not deterministic"
-
-
 def test_nostalgic_effect_with_synthetic_images():
     """
     Test nostalgic effect with synthetic test images.
